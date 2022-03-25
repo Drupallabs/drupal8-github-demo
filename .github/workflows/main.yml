@@ -1,0 +1,12 @@
+# Github
+name: issue-greeter
+on: "push"
+jobs:
+  notify-devpanel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: notify
+        run: |
+          curl -s -X PUT https://test.site.devpanel.com/web-hooks/multistack/webhooks/623dc5eeca3f7b0014c5e55d/applications/623dc5f0ca3f7b0014c5e56a \
+            -d '{}' \
+            -H "Authorization: Bearer ${{ secrets.DP_TOKEN }}"
